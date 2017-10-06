@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="POCPrism.Views.MainPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions"
+             Title="Profile"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <ScrollView>
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO" />
+
+            </Grid.RowDefinitions>
+
+            <!-- Header Background -->
+
+            <Image Source="back_profile.png" Aspect="AspectFill" HeightRequest="170"/>
+            <Image Source="CurvedMask.png" VerticalOptions="End" Aspect="Fill" />
+
+            <!-- Profile Name-->
+
+            <StackLayout Grid.Row="1" Padding="0,50,0,0">
+                <Label Text="Jonas Spohr" Style="{StaticResource ProfileNameLabel}"/>
+                <Label Text="Computer Geek" Style="{StaticResource ProfileTagLabel}"/>
+            </StackLayout>
+
+            <!-- Social Stats -->
+
+            <Grid Grid.Row="2" ColumnSpacing="0" Margin="0,40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Label Text="3" Style="{StaticResource StatsNumberLabel}"/>
+                    <Label Text="Likes" Style="{StaticResource StatsCaptionLabel}">
+                    </Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToLikesPageCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Label Text="1" Style="{StaticResource StatsNumberLabel}"/>
+                    <Label Text="Following" Style="{StaticResource StatsCaptionLabel}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToFollowingPageCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+
+                <StackLayout Grid.Column="2">
+                    <Label Text="5000K" Style="{StaticResource StatsNumberLabel}"/>
+                    <Label Text="Followers" Style="{StaticResource StatsCaptionLabel}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToFollowersPageCommand}"></TapGestureRecognizer>
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </Grid>
+
+            <!-- Profile -->
+
+            <Label Grid.Row="3" Text="Hi I'm Jonas, I'm a very happy person and I love to write clean code."
+               Style="{StaticResource MainBodyLabel}" Margin="20,10"/>
+
+            <!-- Follow Button -->
+
+            <Grid Grid.Row="4" ColumnSpacing="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0">
+                    <Button
+                    Text="Take photo" 
+                    Margin="20" 
+                    x:Name="TookPicture"
+                    Style="{StaticResource FollowButton}"
+                    />
+                </StackLayout>
+
+                <StackLayout Grid.Column="1">
+                    <Button
+                    Text="Browse photo" 
+                    Margin="20" 
+                    x:Name="BrowsePicture"
+                    Style="{StaticResource FollowButton}"
+                    />
+                </StackLayout>
+            </Grid>
+
+            <!-- Profile Image -->
+            <controls:CircleImage Source="KirkProfile.png" 
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="End"
+                                  TranslationY="50"
+                                  Aspect="AspectFill"
+                                  WidthRequest="120"
+                                  HeightRequest="120"
+                                  BorderThickness="3"
+                                  BorderColor="#C1CDCD"
+                                  x:Name="PhotoImage">
+            </controls:CircleImage>
+
+        </Grid>
+
+    </ScrollView>
+
+</ContentPage>
